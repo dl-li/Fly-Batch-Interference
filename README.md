@@ -6,9 +6,9 @@
 
 ## 准备工作
 - **Python**和**selenium**库
-- **WebDriver**
+- **WebDriver**：
     前往浏览器的开发者网站下载对应的WebDriver。此处使用Microsoft Edge浏览器的msedgedriver，**注意版本号一定与浏览器版本对应**。下载好后存放在项目根目录下。
-- **FASTA文件**
+- **FASTA文件**：
     准备包含所有目标序列的单个FASTA文件。可以借助FlyBase  ID Validator批量获取FlyBase ID，然后使用FlyBase  Sequence Downloader的“Bulk ID”模式获取符合要求的FASTA文件。
 
 ## get_AS_seq.py

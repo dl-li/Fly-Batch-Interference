@@ -6,9 +6,9 @@ These scripts navigates to [DSIR](http://biodev.cea.fr/DSIR/DSIR.html) to calcul
 
 ## Preparation
 - **Python** and the **selenium** library
-- **WebDriver**
+- **WebDriver**: 
     Go to the developer's website of the browser you are using to download the corresponding WebDriver. Here, Microsoft Edge browser's msedgedriver is used. **Ensure that the version number matches the browser version**. After downloading, place it in the project root directory.
-- **FASTA File**
+- **FASTA File**: 
     Prepare a single FASTA file containing all target sequences. You can obtain FlyBase IDs in bulk with the help of the FlyBase ID Validator, and then use the "Bulk ID" mode of the FlyBase Sequence Downloader to obtain the FASTA files.
 
 ## get_AS_seq.py
