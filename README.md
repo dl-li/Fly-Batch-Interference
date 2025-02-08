@@ -2,7 +2,7 @@
 
 中文 | [English](/README-en.md)
 
-该脚本操作浏览器前往[DSIR](http://biodev.cea.fr/DSIR/DSIR.html)计算靶向序列，再根据(Ni Lab's Protocol)[http://www.bio-protocol.org/e3158]设计shRNA的引物。**注意**：生成的引物特异性未经[BLAST](https://flybase.org/blast/)验证，请在使用前自行验证。
+该脚本操作浏览器前往[DSIR](http://biodev.cea.fr/DSIR/DSIR.html)计算靶向序列，再根据(Ni Lab's Protocol)[http://www.bio-protocol.org/e3158]设计shRNA的引物。**注意：生成的引物特异性未经[BLAST](https://flybase.org/blast/)验证**，请在使用前自行验证。
 
 ## 准备工作
 - **Python**和**selenium**库
