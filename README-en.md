@@ -9,7 +9,7 @@ These scripts navigates to [DSIR](http://biodev.cea.fr/DSIR/DSIR.html) to calcul
 - **WebDriver**
     Go to the developer's website of the browser you are using to download the corresponding WebDriver. Here, Microsoft Edge browser's msedgedriver is used. **Ensure that the version number matches the browser version**. After downloading, place it in the project root directory.
 - **FASTA File**
-    Prepare a single FASTA file containing all target sequences. You can use FlyBase  ID Validator to batch add IDs or use FlyBase  Sequence Downloader in "Bulk ID" mode to retrieve the required FASTA file.
+    Prepare a single FASTA file containing all target sequences. You can obtain FlyBase IDs in bulk with the help of the FlyBase ID Validator, and then use the "Bulk ID" mode of the FlyBase Sequence Downloader to obtain the FASTA files.
 
 ## get_AS_seq.py
 Ensure that msedgedriver is placed in the project root directory after installation. Fill in the input and output paths as follows:
@@ -17,8 +17,8 @@ Ensure that msedgedriver is placed in the project root directory after installat
 fasta_file = "Example.fasta"
 output_csv = "AS_results.csv"
 ```
-Run the script, and wait for the operation to complete. (If DSIR returns no results, it will wait for the next sequence to be processed; please be patient)
-The resulting CSV file contains the input sequences targeted by DSIR and the first five AS Sequence outputs.
+Run the script, and wait for the operation to complete. (It's observed that if DSIR returns no results, it will wait for a while before operating on the next sequence, please be patient)
+The resulting CSV file contains the input sequences and the top five "AS Sequence" outputs.
 
 ## get_primers.py
 Fill in the input and output paths as follows:
