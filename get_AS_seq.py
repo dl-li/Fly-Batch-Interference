@@ -1,4 +1,5 @@
 import csv
+import os
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -8,13 +9,26 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException
 # 指定一个多个序列的fasta文件，然后使用DSIR工具来获取每个序列的AS序列，将结果保存到一个CSV文件中。
 # 需要安装浏览器对应的 WebDriver，这里使用的是 Edge 浏览器，所以需要下载 Edge WebDriver。注意：WebDriver 的版本要与浏览器版本匹配。
 
+# Get project root directory
+project_root = os.path.dirname(os.path.abspath(__file__))
+
 # Input/output file paths
-fasta_file = "Example.fasta"
-output_csv = "AS_results.csv"
+# 输入FASTA文件：包含目标序列的FASTA文件
+fasta_file = os.path.join(project_root, "example", "Example.fasta")
+
+# 输出CSV文件：存储AS序列结果
+output_csv = os.path.join(project_root, "example", "AS_results.csv")
 
 # Initialize WebDriver
 options = webdriver.EdgeOptions()
-driver = webdriver.Edge(options=options)
+# Use msedgedriver from project root directory
+msedgedriver_path = os.path.join(project_root, "msedgedriver")
+if os.path.exists(msedgedriver_path):
+    driver = webdriver.Edge(executable_path=msedgedriver_path, options=options)
+else:
+    # Fallback to system PATH if msedgedriver not found in project root
+    driver = webdriver.Edge(options=options)
+    print(f"Warning: msedgedriver not found at {msedgedriver_path}. Using system PATH.")
 
 # URL of the DSIR webpage
 url = "http://biodev.cea.fr/DSIR/DSIR.html"

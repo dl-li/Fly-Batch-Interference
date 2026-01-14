@@ -8,36 +8,51 @@ This script operates the browser to visit [DSIR](http://biodev.cea.fr/DSIR/DSIR.
 - **Python** and **selenium** package
 - **WebDriver**:
     Go to the browser developer website to download the corresponding WebDriver. Here we use Microsoft Edge browser's msedgedriver, **note that the version number must match the browser version**. After downloading, place it in the project root directory.
+- **Biopython**:
+    Used for calling NCBI BLAST API for sequence verification. Can be installed using `pip install biopython` or `uv add biopython`.
 - **FASTA file**:
     Prepare a single FASTA file containing all target sequences. You can use FlyBase ID Validator to batch obtain FlyBase IDs, then use FlyBase Sequence Downloader's "Bulk ID" mode to get compliant FASTA files. If you have multiple FASTA files, you can use the `join_fasta_files.py` script to merge them.
 
 ## join_fasta_files.py: Merge Multiple FASTA Files
 ```python
-directory = "all fasta files"  # Change this to your directory path
-output_file = "merged.fasta"  # Output file name
-all_sequences = False  # True=merge all sequences, False=only the first sequence from each file
+# Input directory: Directory containing multiple FASTA files
+directory = os.path.join(project_root, "example", "all fasta files")
+
+# Output file: Merged FASTA file
+output_file = os.path.join(project_root, "example", "merged.fasta")
+
+# Whether to merge all sequences (False=only first sequence from each file)
+all_sequences = False
 ```
 
 ## get_AS_seq.py: Get AS Sequence Based on Target Sequences
 After ensuring msedgedriver is placed in the project root directory, fill in the input and output paths
 ```python
-fasta_file = "Example.fasta"
-output_csv = "AS_results.csv"
+fasta_file = os.path.join(project_root, "example", "Example.fasta")
+output_csv = os.path.join(project_root, "example", "AS_results.csv")
 ```
 Run the script and wait for completion. (It has been observed that if DSIR returns no results, it will wait for a while before processing the next sequence, please be patient)
 The output CSV file contains the input target sequences and the top five AS Sequences calculated by DSIR.
 
-## get_primers.py: Design Primers Based on AS Sequence
+## get_primers.py: Design Primers Based on AS Sequence with BLAST Verification
 Fill in the input and output paths
 ```python
 def main():
-    input_file = 'AS_results.csv'
-    output_file = 'Primer_results.csv'
+    input_file = os.path.join(project_root, 'example', 'AS_results.csv')
+    output_file = os.path.join(project_root, 'example', 'Primer_results.csv')
 ```
 Optionally output primers with bulges for better silencing effect.
 ```python
 def main():
     ...
-    generate_primers(row['AS Sequence - 1'], introduce_bulges=True)
+    forward_primer, reverse_primer = generate_primers(as_sequence, introduce_bulges=True)
 ```
-Run the script to get a CSV file containing primer sequences.
+Run the script to get a CSV file containing:
+- Flybase ID
+- AS Sequence
+- AS Sequence Number
+- Primer-F (forward primer)
+- Primer-R (reverse primer)
+- Max Non-Target Match (maximum non-target site match)
+
+**Note**: The script will automatically perform BLAST verification for each AS Sequence, which requires network connection. The verification process may take some time to complete.

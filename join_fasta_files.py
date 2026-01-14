@@ -2,10 +2,18 @@ import os
 import argparse
 from pathlib import Path
 
+# Get project root directory
+project_root = os.path.dirname(os.path.abspath(__file__))
+
 # 将多个fasta文件合并为一个文件
-directory = "all fasta files"  # 修改这里为你的目录路径
-output_file = "merged.fasta"  # 输出文件名
-all_sequences = False  # True=合并所有序列, False=只要每个文件的第一个序列
+# 输入目录：包含多个FASTA文件的目录
+directory = os.path.join(project_root, "example", "all fasta files")
+
+# 输出文件：合并后的FASTA文件
+output_file = os.path.join(project_root, "example", "merged.fasta")
+
+# 是否合并所有序列（False=只取每个文件的第一个序列）
+all_sequences = False
 
 
 

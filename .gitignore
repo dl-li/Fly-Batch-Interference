@@ -1,4 +1,29 @@
+# Generated result files
 AS_results.csv
 Primer_results.csv
+BLAST_results.csv
+blast_result.xml
+merged.fasta
+
+# WebDriver
 msedgedriver
+
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# System files
 .DS_Store
+
+# IDE files
+.idea/
+.vscode/
+
+# Trae IDE files
+.trae/
+
+# Test files (optional, uncomment if you don't want to commit test results)
+# tests/blast_result.xml
