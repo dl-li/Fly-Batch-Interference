@@ -2,7 +2,7 @@
 
 [中文](/README.md) | English
 
-This script operates the browser to visit [DSIR](http://biodev.cea.fr/DSIR/DSIR.html) to calculate target sequences, then designs shRNA primers according to [Ni Lab's Protocol](http://www.bio-protocol.org/e3158). **Note: The generated primer specificity has not been verified through [BLAST](https://flybase.org/blast/)**, please verify before use.
+This script operates the browser to visit [DSIR](http://biodev.cea.fr/DSIR/DSIR.html) to calculate target sequences, then designs shRNA primers according to [Ni Lab's Protocol](http://www.bio-protocol.org/e3158). 
 
 ## Preparation
 - **Python** and **selenium** package
